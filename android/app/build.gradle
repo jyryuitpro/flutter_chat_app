@@ -24,6 +24,7 @@ if (flutterVersionName == null) {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
@@ -46,6 +47,7 @@ android {
         applicationId "com.jyryuitpro.flutter_chat_app"
         minSdkVersion 16
         targetSdkVersion 30
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -64,5 +66,8 @@ flutter {
 }
 
 dependencies {
+    implementation platform('com.google.firebase:firebase-bom:28.4.2')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
 }
